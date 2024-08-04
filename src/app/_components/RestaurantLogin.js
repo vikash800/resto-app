@@ -1,7 +1,7 @@
 const RestaurantLogin=()=>{
     return(
         <>
-       <h3> Login component</h3>
+       <h3> Login </h3>
        <div>
         <div className="input-wrapper">
             <input type="text" placeholder="Enter email id" className="input-wrapper" />
