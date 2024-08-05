@@ -1,24 +1,31 @@
 import { useState } from "react";
 
 const RestaurantSignUp=()=>{
-    const[email,setEmail]=useState('');
-    const[password,setPassword]=useState('');
-    const[c_password,setc_password]=useState('');
-    const[name,setName]=useState('');
-    const[city,setCity]=useState('');
-    const[address,setAddress]=useState('');
-    const[contact,setContact]=useState('');
+    const[email,setEmail]=useState("");
+    const[password,setPassword]=useState("");
+    const[c_password,setc_password]=useState("");
+    const[name,setName]=useState("");
+    const[city,setCity]=useState("");
+    const[address,setAddress]=useState("");
+    const[contact,setContact]=useState("");
 
     const handleSignup=async ()=>{
         console.log(email,password,c_password,name,city,address,contact);
-        let result = await fetch("http://localhost:3000/api/restaurant",{
+        let response = await fetch("http://localhost:3000/api/restaurant",{
             method:"POST",
             body:JSON.stringify({email,password,name,city,address,contact})
         
-        })
+        });
 
-        result = await result.json();
-        console.log (result);
+        response = await Response.json();
+        console.log (response);
+        if(response.success){
+            console.log(response);
+            console.log(response);
+            const {result} = response
+            delete result.password;
+            localStorage.setItem("restaurantUser",JSON.stringify(result));
+        }
     }
 
     return(
