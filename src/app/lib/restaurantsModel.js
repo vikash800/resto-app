@@ -6,5 +6,6 @@ const restaurantModel=new mongoose.Schema({
     name:String
 });
 
-export const  restaurantSchema= mongoose.models.comments
+export const  restaurantSchema= mongoose.models.items
+
 ||mongoose.model("restaurants",restaurantModel);
