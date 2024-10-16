@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const RestaurantSignUp=()=>{
@@ -8,6 +9,7 @@ const RestaurantSignUp=()=>{
     const[city,setCity]=useState("");
     const[address,setAddress]=useState("");
     const[contact,setContact]=useState("");
+    const router=useRouter();
 
     const handleSignup=async ()=>{
         console.log(email,password,c_password,name,city,address,contact);
@@ -16,19 +18,19 @@ const RestaurantSignUp=()=>{
             body:JSON.stringify({email,password,name,city,address,contact})
         
         });
-
+ 
         response = await Response.json();
         console.log (response);
         if(response.success){
             console.log(response);
-            console.log(response);
             const {result} = response
             delete result.password;
             localStorage.setItem("restaurantUser",JSON.stringify(result));
+            router.push("/restaurant/dashboard");
         }
     }
 
-    return(
+    return( 
         <>
          <h3> SignUp</h3>
        <div>
